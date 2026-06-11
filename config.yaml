@@ -1,0 +1,92 @@
+# Stock Market Analysis Bot Configuration
+
+# Stock symbols to analyze (NSE format - add .NS for NSE stocks)
+stocks:
+  - RELIANCE.NS
+  - INFY.NS
+  - TCS.NS
+  - HDFCBANK.NS
+  - ICICIBANK.NS
+  - SBIN.NS
+  - LT.NS
+  - MARUTI.NS
+  - BAJAJFINSV.NS
+  - WIPRO.NS
+
+# Time periods for analysis
+analysis:
+  short_term_days: 20
+  medium_term_days: 60
+  long_term_days: 200
+  
+# Technical Analysis Parameters
+technical:
+  ma_short: 20
+  ma_long: 50
+  rsi_period: 14
+  rsi_overbought: 70
+  rsi_oversold: 30
+  macd_fast: 12
+  macd_slow: 26
+  macd_signal: 9
+  bb_period: 20
+  bb_std: 2
+  stoch_period: 14
+  atr_period: 14
+
+# Fundamental Analysis
+fundamentals:
+  pe_ratio_threshold: 25
+  dividend_yield_threshold: 2.5
+  roe_threshold: 15
+  debt_to_equity_threshold: 1.5
+
+# News & Sentiment Analysis
+news:
+  fetch_enabled: true
+  news_sources:
+    - "economiictimes"
+    - "moneycontrol"
+    - "bseindia"
+  sentiment_threshold: 0.3
+
+# Report Generation
+reports:
+  format: "html"  # html, pdf, both
+  include_charts: true
+  include_technical: true
+  include_fundamentals: true
+  include_news: true
+  output_dir: "reports"
+  theme: "dark"  # light, dark
+
+# Notifications
+notifications:
+  email:
+    enabled: false
+    recipients: []
+    smtp_server: "smtp.gmail.com"
+    smtp_port: 587
+  
+  slack:
+    enabled: true
+    webhook_url: ""
+  
+  telegram:
+    enabled: false
+    bot_token: ""
+    chat_id: ""
+  
+  github_issues:
+    enabled: true
+    label: "stock-analysis"
+
+# Logging
+logging:
+  level: "INFO"
+  log_dir: "logs"
+  max_log_size: 10485760  # 10MB
+  backup_count: 5
+
+# Schedule (for GitHub Actions)
+schedule: "0 9 * * 1-5"  # Every weekday at 9 AM
